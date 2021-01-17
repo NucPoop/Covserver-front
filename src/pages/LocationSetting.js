@@ -1,6 +1,7 @@
 import '../style/LocationSetting.css';
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 //import Button from 'react-bootstrap/Button';
 
 export default class LocationSetting extends Component {
@@ -33,6 +34,7 @@ export default class LocationSetting extends Component {
                     </Form.Group>
                 </Form>
 
+                <Button controlId="setLocation" style={{width: '300px'}}>설정</Button>
             </div>
         );
     }
