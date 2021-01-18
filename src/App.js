@@ -21,13 +21,15 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/location" component={LocationSetting}/>
             
-            <div className="auth-wrapper">
-              <div className="auth-inner">
+            {/* <div className="auth-wrapper"> */}
+              {/* <div className="auth-inner"> */}
+              <div className="auth-temp">
                 <Route path="/sign-in" component={Auth} />
                 <Route path="/sign-up" component={SignUp} />
                 <Route path="/withdrawal" component={Withdrawal}/>
-              </div>
-              </div>
+                </div>
+              {/* </div> */}
+              {/* </div> */}
           </Switch>
           
 
