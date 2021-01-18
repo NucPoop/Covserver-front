@@ -1,15 +1,18 @@
 .location-setting{
-    text-align: center;
+    width: fit-content;
+    margin: auto;
 }
 
 h3{
-    margin: 2%;
+    margin: 10%;
+    text-align: center;
 }
 
-Form.Control{
-    width: 400px;
+.province, .city{
+    width: 300px;
 }
-/* 
-.test{
-    width: 100px;
-} */
+
+.setlocation-btn{
+    width: 300px;
+    margin-top: 10%;
+}

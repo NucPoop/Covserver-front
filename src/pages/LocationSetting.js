@@ -14,7 +14,7 @@ export default class LocationSetting extends Component {
                     <Form.Group controlId="location-state">
                         <Form.Label>도</Form.Label>
                         <br/>
-                        <Form.Control style={{width: '300px'}} as="select" custom>
+                        <Form.Control className="province" as="select" custom>
                             <option>서울</option>
                             <option>부산</option>
                             <option>진주</option>
@@ -23,10 +23,10 @@ export default class LocationSetting extends Component {
                 </Form>
 
                 <Form>
-                    <Form.Group controlId="location-city">
+                    <Form.Group className="city" controlId="location-city">
                         <Form.Label>시</Form.Label>
                         <br/>
-                        <Form.Control style={{width: '300px'}} as="select" custom>
+                        <Form.Control as="select" custom>
                             <option>서울</option>
                             <option>부산</option>
                             <option>진주</option>
@@ -34,7 +34,7 @@ export default class LocationSetting extends Component {
                     </Form.Group>
                 </Form>
 
-                <Button controlId="setLocation" style={{width: '300px'}}>설정</Button>
+                <Button className="setlocation-btn" controlId="setLocation">설정</Button>
             </div>
         );
     }

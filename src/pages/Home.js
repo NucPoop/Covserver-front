@@ -23,7 +23,7 @@ class Home extends Component {
                             <Nav defaultActiveKey="/" className="flex-column">
                                 <Nav.Link href="/">전국</Nav.Link>
                                 <Nav.Link href="/">지역</Nav.Link>
-
+                                
                             </Nav>
                         </Col>
                         <Col xs={9} className="home-content">
