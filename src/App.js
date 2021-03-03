@@ -17,21 +17,21 @@ function App() {
           <Header />
         </header>
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/location" component={LocationSetting}/>
-            
-            {/* <div className="auth-wrapper"> */}
-              {/* <div className="auth-inner"> */}
-              <div className="auth-temp">
-                <Route path="/sign-in" component={Auth} />
-                <Route path="/sign-up" component={SignUp} />
-                <Route path="/withdrawal" component={Withdrawal}/>
-                </div>
-              {/* </div> */}
-              {/* </div> */}
-          </Switch>
-          
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/location" component={LocationSetting} />
+
+          {/* <div className="auth-wrapper"> */}
+          {/* <div className="auth-inner"> */}
+          <div className="auth-temp">
+            <Route path="/sign-in" component={Auth} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/withdrawal" component={Withdrawal} />
+          </div>
+          {/* </div> */}
+          {/* </div> */}
+        </Switch>
+
 
         {/* <Router>
     <div className="App">
@@ -62,10 +62,11 @@ function App() {
       </div>
     </div></Router> */}
 
-        <footer className="App-footer">
-          <Footer />
-        </footer>
+
       </div>
+      <footer className="App-footer">
+        <Footer />
+      </footer>
     </Router>
   );
 }

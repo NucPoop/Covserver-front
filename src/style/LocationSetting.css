@@ -1,6 +1,8 @@
 .location-setting{
     width: fit-content;
+    height: fit-content;
     margin: auto;
+    position: relative;
 }
 
 h3{
@@ -8,11 +10,16 @@ h3{
     text-align: center;
 }
 
-.province, .city{
+.alarm-setting{
+    height: auto;
+}
+
+.province, .city, .alarm{
     width: 290px;
 }
 
-.setlocation-btn{
+.setlocation-btn, .setalarm-btn{
     width: 290px;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 20%;
 }

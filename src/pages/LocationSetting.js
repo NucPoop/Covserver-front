@@ -8,7 +8,7 @@ export default class LocationSetting extends Component {
     render() {
         return (
             <div className="location-setting">
-                <h3>지역설정</h3>
+                <h3>지역 설정</h3>
 
                 <Form>
                     <Form.Group controlId="location-state">
@@ -35,6 +35,20 @@ export default class LocationSetting extends Component {
                 </Form>
 
                 <Button className="setlocation-btn" controlId="setLocation">설정</Button>
+
+                <div className="alarm-setting">
+                    <h3>알림 설정</h3>
+                    
+                    <Form>
+                        <Form.Group className="alarm" controlId="set-alarm">
+                            <Form.Label>이메일</Form.Label>
+                            <br/>
+                            <Form.Control type="email"/>
+                        </Form.Group>
+                    </Form>
+
+                    <Button className="setalarm-btn" controlId="setAlarm">변경하기</Button>
+                </div>
             </div>
         );
     }
