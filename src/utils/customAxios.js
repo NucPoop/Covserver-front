@@ -1,7 +1,13 @@
 import axios from 'axios';
 
 export default function customAxios(url, callback) {
-    console.log(url);
+    console.log("api call : " + url);
+    // state={
+    //     loading: false,
+    //     ItemList: []
+    // };
+
+    
     axios(
         {
             url: '/api' + url,
@@ -10,7 +16,7 @@ export default function customAxios(url, callback) {
             withCredentials: true,
         }
     ).then(function(response){
-            callback(response.data);
+            callback(response=> response);
         }
     );
 }
