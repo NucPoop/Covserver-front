@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import LocationSetting from './pages/LocationSetting';
 import Withdrawal from './pages/Withdrawal';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ApiTest from './pages/ApiTest';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/sign-in" component={Auth} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/withdrawal" component={Withdrawal} />
+            <Route path="/api" component={ApiTest}/>
           </div>
           {/* </div> */}
           {/* </div> */}
