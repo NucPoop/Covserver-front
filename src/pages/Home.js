@@ -1,10 +1,10 @@
-import '../style/Home.css';
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Table from 'react-bootstrap/Table';
+import Row from 'react-bootstrap/Row';
+import '../style/Home.css';
+import Covid from './components/Covid';
 
 
 class Home extends Component {
@@ -29,10 +29,12 @@ class Home extends Component {
                         <Col xs={9} className="home-content">
                             <div className="home-time">
                                 <h4>전국 Covid 19 현황판</h4>
-                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth()}월 {this.state.date.getDate()}일</h1>
+                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth()+1}월 {this.state.date.getDate()}일</h1>
                             </div>
 
-                            <Table striped bordered hover size="sm" className="home-table">
+                            
+                            <Covid/>
+                            {/* <Table striped bordered hover size="sm" className="home-table">
                                 <thead>
                                     <tr>
                                         <th>확진환자</th>
@@ -55,7 +57,7 @@ class Home extends Component {
                                         <td>+ 20</td>
                                     </tr>
                                 </tbody>
-                            </Table>
+                            </Table> */}
                         </Col>
                     </Row>
                 </Container>

@@ -1,14 +1,14 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/default/Header';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import './App.css';
 import Footer from './components/default/Footer';
+import Header from './components/default/Header';
 import Auth from './pages/Auth';
-import SignUp from './pages/SignUp';
+import Covid from './pages/components/Covid';
 import Home from './pages/Home';
 import LocationSetting from './pages/LocationSetting';
+import SignUp from './pages/SignUp';
 import Withdrawal from './pages/Withdrawal';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ApiTest from './pages/ApiTest';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             <Route path="/sign-in" component={Auth} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/withdrawal" component={Withdrawal} />
-            <Route path="/api" component={ApiTest}/>
+            <Route path="/api" component={Covid}/>
           </div>
           {/* </div> */}
           {/* </div> */}
