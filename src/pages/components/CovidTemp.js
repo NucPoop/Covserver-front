@@ -39,10 +39,10 @@ class CovidTemp extends Component {
 
         axios(
             {
-                // url: '/api/cov?date=' + dateCon,
-                // method: 'get',
-                // baseURL: 'http://localhost:8080',
-                // withCredentials: true,
+                url: '/api/cov?date=' + dateCon,
+                method: 'get',
+                baseURL: 'http://localhost:8080',
+                withCredentials: true,
             }
         ).then((response) => {
             let result = response.data.response.body.items;
@@ -50,10 +50,10 @@ class CovidTemp extends Component {
                 data: result
             });
             axios({
-                // url: '/api/cov?date=' + dateConYet,
-                // method: 'get',
-                // baseURL: 'http://localhost:8080',
-                // withCredentials: true,
+                url: '/api/cov?date=' + dateConYet,
+                method: 'get',
+                baseURL: 'http://localhost:8080',
+                withCredentials: true,
             }).then((respon) => {
                 let yet = respon.data.response.body.items;
                 this.setState({
