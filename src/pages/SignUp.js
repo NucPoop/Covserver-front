@@ -1,20 +1,13 @@
+import '../style/SignUp.css';
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 export default class SignUp extends Component {
     render() {
         return (
             <form>
                 <h3>회원가입</h3>
-
-                <div className="form-group">
-                    <label>이름</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
-
-                <div className="form-group">
-                    <label>성</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
 
                 <div className="form-group">
                     <label>이메일</label>
@@ -26,9 +19,12 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">회원가입</button>
+                <p className="check-message"> 이미 사용 중인 이메일입니다. </p>
+
+                <Button onClick="/" type="submit" className="sign-up">회원가입</Button>
+
                 <p className="forgot-password text-right">
-                    Already registered <a href="/">sign in?</a>
+                    계정이 있으신가요? <a href={"/sign-in"}>로그인</a>
                 </p>
             </form>
         );
