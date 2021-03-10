@@ -2,30 +2,49 @@ import '../style/LocationSetting.css';
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-//import axios from 'axios';
+import axios from 'axios';
 //import Button from 'react-bootstrap/Button';
 
 export default class LocationSetting extends Component {
-    // constructor() {
-    //     super();
+    constructor() {
+        super();
 
-    //     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        // axios.post('https://www.juso.go.kr/addrlink/addrLinkApi.do',
+        //     {
+                
+        //     },
+        //     {
+        //         headers:{
+        //             'Content-type': 'application/json',
+        //             'Accpet': 'application/json'
+        //         }
+        //     }
+        // )
+        axios.get('https://www.juso.go.kr/addrlink/addrLinkApi.do',{
+            params: {
+                confmKey: 'devU01TX0FVVEgyMDIxMDMwNDExNDg0MDExMDg3OTc=',
+                returnUrl: document.location.href,
+                keyword: "시"
+            }
+        })
+            .then((response) => {console.log(response.data);})
+            .catch((Error) => {console.log(Error)});
 
-    //     fetch('https://www.juso.go.kr/addrlink/addrLinkApi.do', {
-    //         method: "get",
-    //         params: {
-    //             confmKey: "devU01TX0FVVEgyMDIxMDMwNDExNDg0MDExMDg3OTc=",
-    //             keyword: "siNm",
-    //             resultType: "json"
-    //         },
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'applictation/json'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => console.log(data));
-    // }
+        // fetch('https://www.juso.go.kr/addrlink/addrLinkApi.do', {
+        //     method: "get",
+        //     params: {
+        //         confmKey: "devU01TX0FVVEgyMDIxMDMwNDExNDg0MDExMDg3OTc=",
+        //         keyword: "siNm",
+        //         resultType: "json"
+        //     },
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'applictation/json'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data));
+    }
 
     render() {
         return (

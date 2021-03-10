@@ -1,4 +1,8 @@
+import '../style/Auth.css';
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+
 class Auth extends Component {
     render() {
         return (
@@ -15,6 +19,8 @@ class Auth extends Component {
             <form>
             <h3>로그인</h3>
 
+            <p className="check-message"> 가입되지 않은 이메일입니다. </p>
+
             <div className="form-group">
                 <label>아이디</label>
                 <input type="email" className="form-control" placeholder="Enter email" />
@@ -25,16 +31,14 @@ class Auth extends Component {
                 <input type="password" className="form-control" placeholder="Enter password" />
             </div>
 
-            <div className="form-group">
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                </div>
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-block">로그인</button>
+            <p className="forgot-password text-center">
+                계정이 없으신가요? <a href={"/sign-up"}>회원가입</a>
+            </p>
+        
+            <Button onClick="/" type="submit" className="login">로그인</Button>
+            
             <p className="forgot-password text-right">
-                Forgot <a href="/">password?</a>
+                 <a href="/">비밀번호를 잊으셨나요?</a>
             </p>
         </form>
         );
