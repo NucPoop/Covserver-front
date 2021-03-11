@@ -1,7 +1,6 @@
 import '../style/SignUp.css';
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 
 export default class SignUp extends Component {
     render() {

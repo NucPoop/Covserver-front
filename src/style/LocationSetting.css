@@ -14,12 +14,32 @@ h3{
     height: auto;
 }
 
-.province, .city, .alarm{
-    width: 290px;
+.province, .time{
+    width: 265px;
 }
 
 .setlocation-btn, .setalarm-btn{
     width: 290px;
     margin-top: 5%;
     margin-bottom: 20%;
+}
+
+.alarm-radio{
+    width: 100%;
+    margin: auto;
+}
+
+.alarm-radiobtn{
+    background: lightgray;
+}
+
+.label{
+    text-align: center;
+    margin-right: 10px;
+}
+
+.timeLabel{
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 5px;
 }
