@@ -9,6 +9,9 @@ import Home from './pages/Home';
 import LocationSetting from './pages/LocationSetting';
 import SignUp from './pages/SignUp';
 import Withdrawal from './pages/Withdrawal';
+import LogOut from './pages/LogOut';
+import UserInfo from './pages/UserInfo';
+import FindPsw from './pages/FindPsw';
 
 function App() {
   return (
@@ -27,7 +30,10 @@ function App() {
           <div className="auth-temp">
             <Route path="/sign-in" component={Auth} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/log-out" component={LogOut} />
+            <Route path="/user-info" component={UserInfo} />
             <Route path="/withdrawal" component={Withdrawal} />
+            <Route path="/findPsw" component={FindPsw} />
             <Route path="/api" component={Covid}/>
           </div>
           {/* </div> */}

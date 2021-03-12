@@ -1,0 +1,28 @@
+.check-message{
+    margin-top: 10px;
+}
+
+.withdraw2{
+    width: 290px;
+    border-color: #b84c4c;
+    background-color: #e25d5d;
+    margin-top: 10px;
+}
+
+.withdraw2:hover{
+    background-color: #cc4646;
+    border-color: #ac4545;
+}
+
+.withdraw2:focus {
+    color: #fff;
+    background-color: #cc4646;
+    border-color: #ac4545;
+    box-shadow: 0 0 0 0.2rem rgb(204 70 70 / 50%) !important;
+}
+
+.withdraw2:active{
+    color: #fff;
+    background-color: #ac4545 !important;
+    border-color: #ac4545 !important;
+}

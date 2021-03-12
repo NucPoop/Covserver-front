@@ -1,4 +1,6 @@
+import '../style/Withdrawal.css';
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button'
 
 export default class Withdrawal extends Component {
     render() {
@@ -9,9 +11,11 @@ export default class Withdrawal extends Component {
                 <div className="form-group">
                     <label>비밀번호</label>
                     <input type="text" className="form-control" placeholder="Enter password" />
-                </div>
 
-                <button type="submit" className="btn btn-primary btn-block">탈퇴</button>
+                    <p className="check-message"> 계정을 다시 복구할 수 없습니다. 탈퇴하시겠습니까? </p>
+
+                    <Button href="/" type="button" className="withdraw2">탈퇴하기</Button>
+                </div>
             </form>
         );
     }

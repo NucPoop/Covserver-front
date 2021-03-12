@@ -19,6 +19,7 @@ export default function Menubar() {
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">정보</Nav.Link>
           <Nav.Link as={Link} to="/location">지역 및 알림 설정</Nav.Link>
+          {/* <Nav.Link as={Link} to="/location" hidden={true}>지역 및 알림 설정</Nav.Link> */}
         </Nav>
         <Form inline>
           <Link className="nav-link" to={"/sign-in"}>
@@ -26,6 +27,14 @@ export default function Menubar() {
           </Link>
           <Link className="nav-link" to={"/sign-up"}>
             <Button variant="outline-primary">회원가입</Button>
+          </Link>
+          <Link className="nav-link" to={"/log-out"}>
+          {/* <Link className="nav-link" to={"/log-out"} hidden={true}> */}
+            <Button variant="outline-success">로그아웃</Button>{' '}
+          </Link>
+          <Link className="nav-link" to={"/user-info"}>
+          {/* <Link className="nav-link" to={"/user-info"} hidden={true}> */}
+            <Button variant="outline-primary">회원정보</Button>
           </Link>
         </Form>
       </Navbar.Collapse>

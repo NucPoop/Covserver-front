@@ -27,7 +27,7 @@ export default function Covid() {
         return (
             <Table striped bordered hover size="sm" className="home-table">
                 <thead>
-                    <tr>
+                    <tr className="tableHead">
                         <th> - </th>
                         <th>확진자</th>
                         <th>격리해제</th>

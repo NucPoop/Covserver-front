@@ -37,7 +37,7 @@ class Auth extends Component {
             <Button onClick="/" type="submit" className="login">로그인</Button>
             
             <p className="forgot-password text-right">
-                 <a href="/">비밀번호를 잊으셨나요?</a>
+                 <a href="/findpsw">비밀번호를 잊으셨나요?</a>
             </p>
         </form>
         );

@@ -27,3 +27,21 @@
 .home-time{
     text-align: center;
 }
+
+.location-radio{
+    width: 100%;
+    margin: auto;
+}
+
+.location-radiobtn{
+    background: lightgray;
+}
+
+.btn.disabled{
+    background: lightgray;
+    opacity: 100%;
+}
+
+.tableHead{
+    background: lightblue;
+}
