@@ -2,11 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 //import customAxios from "../utils/customAxios";
 
-export default function CovTotalAPI(condition) {
+export default function Covtotal(condition) {
     const [covdata, setCovdata] = useState(null);
 
     const option = {
-        url: '/api/cov?date='+ condition,
+        url: '/api/cov/?date='+ condition,
         method: 'get',
         baseURL: 'http://localhost:8080',
         withCredentials: true,

@@ -1,6 +1,7 @@
 import { Spinner } from "react-bootstrap";
-import CovTotalAPI from "./CovTotalAPI";
+import Covtotal from "./CovAPIs";
 import Table from 'react-bootstrap/Table';
+import './Covid.css';
 
 export default function Covid() {
 
@@ -11,17 +12,17 @@ export default function Covid() {
     dateYet.setDate(date.getDate() - 1);
 
     condition += date.getFullYear();
-    condition +=(date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1) 
+    condition += (date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)
     condition += date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate();
 
-    const [covdata] = CovTotalAPI(condition);
+    const [covdata] = Covtotal(condition);
 
     condition = "";
     condition += dateYet.getFullYear()
-    condition += (dateYet.getMonth() + 1) < 10 ? ("0" + (dateYet.getMonth() + 1)) : (dateYet.getMonth() + 1) 
+    condition += (dateYet.getMonth() + 1) < 10 ? ("0" + (dateYet.getMonth() + 1)) : (dateYet.getMonth() + 1)
     condition += dateYet.getDate() < 10 ? ("0" + dateYet.getDate()) : dateYet.getDate();
 
-    const [covdataYet] = CovTotalAPI(condition);
+    const [covdataYet] = Covtotal(condition);
 
     if (covdata != null && covdataYet != null) {
         return (
@@ -54,7 +55,12 @@ export default function Covid() {
             </Table>
         );
     } else {
-        return <Spinner />
+        return (
+            <div>
+                <Spinner className="loading" animation="border" />
+            </div>
+
+        );
     }
 
 }

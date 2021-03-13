@@ -3,6 +3,17 @@ import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 
 export default class SignUp extends Component {
+
+    state={
+        email:{
+            value:""
+        },
+        password:{
+            value:""
+        },
+        isValid: true,
+
+    }
     render() {
         return (
             <form>
@@ -10,7 +21,7 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>이메일</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" className="form-control" placeholder="Enter email"/>
                 </div>
 
                 <div className="form-group">
@@ -18,7 +29,7 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <p className="check-message"> 이미 사용 중인 이메일입니다. </p>
+                <p hidden={this.state.isValid} className="check-message"> 이미 사용 중인 이메일입니다. </p>
 
                 <Button onClick="/" type="submit" className="sign-up">회원가입</Button>
 
