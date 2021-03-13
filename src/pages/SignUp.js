@@ -8,6 +8,7 @@ export default class SignUp extends Component {
     constructor(props){
         super(props);
         this.SignUp = this.SignUp.bind(this);
+        this.checkMsg = React.createRef();
     }
 
     state = {
@@ -29,12 +30,14 @@ export default class SignUp extends Component {
         });
     };
 
-    handleChangePassword = input =>{
+    handleChangePassword = input => {
         this.setState({
             password: {
                 value:input.target.value
             }
         });
+
+        this.validatePassword(this.state.password.value);
     };
 
     SignUp(event) {
@@ -63,15 +66,15 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>이메일</label>
-                    <input type="email" className="form-control" placeholder="Enter email" onChange={this.handleChangeEmail} value={email}/>
+                    <input type="email" className="form-control" placeholder="Enter email" required onChange={this.handleChangeEmail} value={email}/>
                 </div>
 
                 <div className="form-group">
                     <label>비밀번호</label>
-                    <input type="password" className="form-control" placeholder="Enter password" onChange={this.handleChangePassword} value={password}/>
+                    <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password}/>
                 </div>
 
-                <p hidden={this.state.isValid} className="check-message"> 이미 사용 중인 이메일입니다. </p>
+                <p ref={this.checkMsg} hidden={this.state.isValid} className="check-message"> 이미 사용 중인 이메일입니다. </p>
 
                 <Button type="submit" className="sign-up">회원가입</Button>
 
@@ -80,5 +83,17 @@ export default class SignUp extends Component {
                 </p>
             </form>
         );
+    }
+
+    validatePassword = (password) => {
+        if(password.length < 4) {
+            this.checkMsg.current.innerHTML="4자 이상 입력해주세요.";
+            this.checkMsg.current.hidden=false;
+        } else if (password.length > 20) {
+            this.checkMsg.current.innerHTML="20자 이하 입력해주세요.";
+            this.checkMsg.current.hidden=false;
+        } else {
+            this.checkMsg.current.hidden=true;
+        }
     }
 }
