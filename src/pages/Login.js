@@ -18,8 +18,6 @@ class Login extends Component {
             <form>
             <h3>로그인</h3>
 
-            <p className="check-message"> 가입되지 않은 이메일입니다. </p>
-
             <div className="form-group">
                 <label>아이디</label>
                 <input type="email" className="form-control" placeholder="Enter email" />
@@ -29,6 +27,8 @@ class Login extends Component {
                 <label>비밀번호</label>
                 <input type="password" className="form-control" placeholder="Enter password" />
             </div>
+
+            <p className="check-message"> 가입되지 않은 이메일입니다. </p>
 
             <p className="forgot-password text-center">
                 계정이 없으신가요? <a href={"/sign-up"}>회원가입</a>
