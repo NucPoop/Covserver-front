@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Footer from './components/default/Footer';
 import Header from './components/default/Header';
-import Auth from './pages/Auth';
+import Login from './pages/Login';
 import Covid from './pages/components/Covid';
 import Home from './pages/Home';
 import LocationSetting from './pages/LocationSetting';
@@ -28,13 +28,12 @@ function App() {
           {/* <div className="auth-wrapper"> */}
           {/* <div className="auth-inner"> */}
           <div className="auth-temp">
-            <Route path="/sign-in" component={Auth} />
+            <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/log-out" component={LogOut} />
             <Route path="/user-info" component={UserInfo} />
             <Route path="/withdrawal" component={Withdrawal} />
             <Route path="/findPsw" component={FindPsw} />
-            <Route path="/api" component={Covid}/>
           </div>
           {/* </div> */}
           {/* </div> */}

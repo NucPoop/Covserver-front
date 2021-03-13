@@ -2,7 +2,7 @@ import '../style/Auth.css';
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 
-class Auth extends Component {
+class Login extends Component {
     render() {
         return (
             // <form className="form-signin">
@@ -44,4 +44,4 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+export default Login;

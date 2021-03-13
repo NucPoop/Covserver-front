@@ -1,6 +1,6 @@
 import { API_BASE_URL, ACCESS_TOKEN } from '../Index';
 
-import axios from "axios";
+//import axios from "axios";
 //import { useState, useEffect } from "react";
 
 const request = (options) =>{
@@ -15,7 +15,8 @@ const request = (options) =>{
     const defaults = {headers: headers};
     options = Object.assign({}, defaults, options);
 
-    return axios(options).then(response => 
+    return fetch(options.url, options)
+    .then(response => 
         response.json().then(json => {
             if(!response.ok) {
                 return Promise.reject(json);
