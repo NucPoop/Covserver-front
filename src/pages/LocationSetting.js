@@ -7,34 +7,15 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 //import Button from 'react-bootstrap/Button';
 
 export default class LocationSetting extends Component {
-    // constructor() {
-    //     super();
+    setTime(){
+        var arr = [];
 
-    //     // axios.get('https://www.juso.go.kr/addrlink/addrLinkApi.do', {
-    //     //     params: {
-    //     //         confmKey: 'devU01TX0FVVEgyMDIxMDMwNDExNDg0MDExMDg3OTc=',
-    //     //         returnUrl: document.location.href,
-    //     //         keyword: "시"
-    //     //     }
-    //     // })
-    //     //     .then((response) => { console.log(response.data); })
-    //     //     .catch((Error) => { console.log(Error) });
+        for (let i = 0; i <= 24; i++) {
+            arr.push(<option key={i} value="{i}">{i}시</option>)
+        }
 
-    //     // fetch('https://www.juso.go.kr/addrlink/addrLinkApi.do', {
-    //     //     method: "get",
-    //     //     params: {
-    //     //         confmKey: "devU01TX0FVVEgyMDIxMDMwNDExNDg0MDExMDg3OTc=",
-    //     //         keyword: "siNm",
-    //     //         resultType: "json"
-    //     //     },
-    //     //     headers: {
-    //     //         'Content-Type': 'application/json',
-    //     //         'Accept': 'applictation/json'
-    //     //     }
-    //     // })
-    //     //     .then(response => response.json())
-    //     //     .then(data => console.log(data));
-    // }
+        return arr; 
+    }
 
     render() {
         return (
@@ -79,31 +60,7 @@ export default class LocationSetting extends Component {
                         <Form.Group controlId="timeset">
                             <Form.Label className="timeLabel">시간</Form.Label>
                             <Form.Control className="time" as="select" custom>
-                                <option>0시</option>
-                                <option>1시</option>
-                                <option>2시</option>
-                                <option>3시</option>
-                                <option>4시</option>
-                                <option>5시</option>
-                                <option>6시</option>
-                                <option>7시</option>
-                                <option>8시</option>
-                                <option>9시</option>
-                                <option>10시</option>
-                                <option>11시</option>
-                                <option>12시</option>
-                                <option>13시</option>
-                                <option>14시</option>
-                                <option>15시</option>
-                                <option>16시</option>
-                                <option>17시</option>
-                                <option>18시</option>
-                                <option>19시</option>
-                                <option>20시</option>
-                                <option>21시</option>
-                                <option>22시</option>
-                                <option>23시</option>
-                                <option>24시</option>
+                                {this.setTime()}
                             </Form.Control>
                         </Form.Group>
                     </Form>
