@@ -10,7 +10,7 @@ export default class LocationSetting extends Component {
     setTime(){
         var arr = [];
 
-        for (let i = 0; i <= 24; i++) {
+        for (let i = 10; i <= 23; i++) {
             arr.push(<option key={i} value="{i}">{i}시</option>)
         }
 
