@@ -9,7 +9,6 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.SignIn = this.SignIn.bind(this);
-        this.checkMsg = React.createRef();
     }
 
     state = {
@@ -89,7 +88,7 @@ class Login extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password}/>
                 </div>
 
-                <p ref={this.checkMsg} className="check-message" hidden="true"> 가입되지 않은 이메일입니다. </p>
+                <p className="check-message" hidden="true"> 가입되지 않은 이메일입니다. </p>
 
                 <p className="forgot-password text-center">
                     계정이 없으신가요? <a href={"/sign-up"}>회원가입</a>
@@ -102,18 +101,6 @@ class Login extends Component {
                 </p>
             </form>
         );
-    }
-
-    validatePassword = (password) => {
-        if (password.length < 4) {
-            this.checkMsg.current.innerHTML = "4자 이상 입력해주세요.";
-            this.checkMsg.current.hidden = false;
-        } else if (password.length > 20) {
-            this.checkMsg.current.innerHTML = "20자 이하 입력해주세요.";
-            this.checkMsg.current.hidden = false;
-        } else {
-            this.checkMsg.current.hidden = true;
-        }
     }
 }
 
