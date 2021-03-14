@@ -6,6 +6,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Row from 'react-bootstrap/Row';
 import '../style/Home.css';
 import Covid from './components/Covid';
+import {ACCESS_TOKEN} from './Index';
 
 
 class Home extends Component {
@@ -16,6 +17,9 @@ class Home extends Component {
     }
 
     render() {
+        if (localStorage.getItem(ACCESS_TOKEN)) {
+            console.log(localStorage.getItem(ACCESS_TOKEN));
+        }
         return (
             <div className="home-container">
                 <Container fluid>
@@ -31,7 +35,7 @@ class Home extends Component {
                         <Col xs={9} className="home-content">
                             <div className="home-time">
                                 <h4>전국 Covid 19 현황판</h4>
-                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth() + 1}월 {this.state.date.getDate()}일</h1>
+                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth() + 1}월 {this.state.date.getDate() - 1}일</h1>
                             </div>
 
                             <ToggleButtonGroup className="location-radio" type="radio" name="options" defaultValue={1}>
@@ -41,30 +45,6 @@ class Home extends Component {
 
 
                             <Covid />
-                            {/* <Table striped bordered hover size="sm" className="home-table">
-                                <thead>
-                                    <tr>
-                                        <th>확진환자</th>
-                                        <th>격리해제</th>
-                                        <th>치료 중</th>
-                                        <th>사망</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>70,212</td>
-                                        <td>54,636</td>
-                                        <td>14,391</td>
-                                        <td>1,185</td>
-                                    </tr>
-                                    <tr>
-                                        <td>+ 562</td>
-                                        <td>+ 1067</td>
-                                        <td>- 525</td>
-                                        <td>+ 20</td>
-                                    </tr>
-                                </tbody>
-                            </Table> */}
                         </Col>
                     </Row>
                 </Container>

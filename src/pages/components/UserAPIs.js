@@ -26,6 +26,14 @@ const request = (options) =>{
     );
 };
 
+export function login(loginRequest) {
+    return request({
+        url: API_BASE_URL + "/user/signin",
+        method: 'POST',
+        body: JSON.stringify(loginRequest)
+    });
+}
+
 export function checkEmailAvailability(email) {
     return request({
         url: API_BASE_URL + "/user/checkEmail?email=" + email,

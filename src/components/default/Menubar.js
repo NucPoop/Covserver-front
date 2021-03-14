@@ -4,13 +4,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
-//import Home from '../../pages/Home';
-//import Auth from '../../pages/Auth';
-//import SignUp from '../../pages/SignUp';
-//import FormControl from 'react-bootstrap/FormControl';
-//import NavDropdown from 'react-bootstrap/NavDropdown';
+import { ACCESS_TOKEN } from '../../pages/Index';
 
 export default function Menubar() {
+
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={Link} to="/">CovNoti</Navbar.Brand>
@@ -23,21 +20,27 @@ export default function Menubar() {
         </Nav>
         <Form inline>
           <Link className="nav-link" to={"/sign-in"}>
-            <Button variant="outline-success">로그인</Button>{' '}
+            <Button variant="outline-success" >로그인</Button>{' '}
           </Link>
           <Link className="nav-link" to={"/sign-up"}>
-            <Button variant="outline-primary">회원가입</Button>
+            <Button variant="outline-primary" >회원가입</Button>
           </Link>
-          <Link className="nav-link" to={"/log-out"}>
-          {/* <Link className="nav-link" to={"/log-out"} hidden={true}> */}
+          <Link className="nav-link" to={"/"} onClick={logout}>
+            {/* <Link className="nav-link" to={"/log-out"} hidden={true}> */}
             <Button variant="outline-success">로그아웃</Button>{' '}
           </Link>
           <Link className="nav-link" to={"/user-info"}>
-          {/* <Link className="nav-link" to={"/user-info"} hidden={true}> */}
-            <Button variant="outline-primary">회원정보</Button>
+            {/* <Link className="nav-link" to={"/user-info"} hidden={true}> */}
+            <Button variant="outline-primary" >회원정보</Button>
           </Link>
+
         </Form>
       </Navbar.Collapse>
     </Navbar>
   );
+}
+
+function logout() {
+  console.log("logoutComplete");
+  localStorage.removeItem(ACCESS_TOKEN);
 }
