@@ -9,6 +9,7 @@ export default class SignUp extends Component {
         super(props);
         this.SignUp = this.SignUp.bind(this);
         this.checkMsg = React.createRef();
+        this.signupBtn = React.createRef();
     }
 
     state = {
@@ -18,8 +19,6 @@ export default class SignUp extends Component {
         password: {
             value: ''
         },
-        isValid: true,
-
     }
 
     handleChangeEmail = input => {
@@ -81,9 +80,9 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password} />
                 </div>
 
-                <p ref={this.checkMsg} hidden={this.state.isValid} className="check-message"> 이미 사용 중인 이메일입니다. </p>
+                <p ref={this.checkMsg} hidden={true} className="check-message"> 이미 사용 중인 이메일입니다. </p>
 
-                <Button type="submit" className="sign-up">회원가입</Button>
+                <Button ref={this.signupBtn} type="submit" className="sign-up" disabled={true}>회원가입</Button>
 
                 <p className="forgot-password text-right">
                     계정이 있으신가요? <a href={"/sign-in"}>로그인</a>
@@ -96,11 +95,15 @@ export default class SignUp extends Component {
         if (password.length < 4) {
             this.checkMsg.current.innerHTML = "4자 이상 입력해주세요.";
             this.checkMsg.current.hidden = false;
+            this.signupBtn.current.disabled = true;
         } else if (password.length > 20) {
             this.checkMsg.current.innerHTML = "20자 이하 입력해주세요.";
             this.checkMsg.current.hidden = false;
+            this.signupBtn.current.disabled = true;
         } else {
             this.checkMsg.current.hidden = true;
+            this.signupBtn.current.disabled = false;
         }
     }
+
 }

@@ -1,9 +1,53 @@
 import '../style/FindPsw.css'
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
+import { checkEmailAvailability } from './components/UserAPIs'
 
 export default class FindPsw extends Component {
+
+    constructor(props) {
+        super(props);
+        this.FindEmail = this.FindEmail.bind(this);
+        this.checkEmail = React.createRef();
+        this.submitBtn = React.createRef();
+    }
+
+    state = {
+        email: {
+            value: ''
+        }
+    }
+
+    FindEmail(event) {
+        event.preventDefault();
+
+        checkEmailAvailability(this.state.email.value)
+            .then(response => {
+                if (response.canEmailSignUp == true) {
+                    //가입된 이메일 없음
+                    this.checkEmail.current.hidden = false;
+                    this.checkEmail.current.innerHTML = "해당 이메일로 가입된 계정이 없습니다.";
+                    this.submitBtn.current.disabled = true;
+                } else {
+                    this.checkEmail.current.hidden = true;
+                    this.submitBtn.current.disabled = false;
+                }
+            }).catch(error => {
+                alert("조회 실패");
+            });
+
+    }
+
+    handleChangeEmail = input => {
+        this.setState({
+            email: {
+                value: input.target.value
+            }
+        });
+    }
+
     render() {
+        const email = this.state.email.value;
         return (
             <form>
                 <h3>암호 재설정</h3>
@@ -15,12 +59,12 @@ export default class FindPsw extends Component {
 
                 <div className="form-group">
                     <label>이메일</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" className="form-control" placeholder="Enter email" onBlur={this.FindEmail} onChange={this.handleChangeEmail} value={email} />
                 </div>
 
-                <p className="check-message"> 해당 이메일로 가입된 계정이 없습니다. </p>
+                <p ref={this.checkEmail} className="check-message" hidden={true}> 해당 이메일로 가입된 계정이 없습니다. </p>
 
-                <Button type="submit" className="sendPsw">확인</Button>
+                <Button ref={this.submitBtn} type="submit" className="sendPsw" disabled={true} >확인</Button>
 
             </form>
         );
