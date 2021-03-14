@@ -1,30 +1,52 @@
 import { Spinner } from "react-bootstrap";
-import Covtotal from "./CovAPIs";
 import Table from 'react-bootstrap/Table';
 import './Covid.css';
+import { getCovData } from './CovAPIs';
+import { useState } from "react";
 
 export default function Covid() {
+
 
     var date = new Date();
     var dateYet = new Date();
     var condition = "";
 
+    date.setDate(date.getDate() - 1);
     dateYet.setDate(date.getDate() - 1);
 
     condition += date.getFullYear();
     condition += (date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)
     condition += date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate();
 
-    const [covdata] = Covtotal(condition);
+    var [covdata,setCovdata] = useState(null);
+    if(covdata == null){
+        getCovData(condition).then(response => {
+            setCovdata(response.response.body.items);
+        }
+        ).catch(error => {
+            console.log(error);
+        }
+        );
+    }
 
     condition = "";
     condition += dateYet.getFullYear()
     condition += (dateYet.getMonth() + 1) < 10 ? ("0" + (dateYet.getMonth() + 1)) : (dateYet.getMonth() + 1)
     condition += dateYet.getDate() < 10 ? ("0" + dateYet.getDate()) : dateYet.getDate();
 
-    const [covdataYet] = Covtotal(condition);
+    var [covdataYet,setCovdataYet] = useState(null);
+    if(covdata == null){
+        getCovData(condition).then(response => {
+            setCovdataYet(response.response.body.items);
+        }
+        ).catch(error => {
+            console.log(error);
+        }
+        );
+    }
 
-    if (covdata != null && covdataYet != null) {
+    
+    if (covdata != null && covdataYet!=null) {
         return (
             <Table striped bordered hover size="sm" className="home-table">
                 <thead>

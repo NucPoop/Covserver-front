@@ -1,30 +1,31 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-//import customAxios from "../utils/customAxios";
+import { API_BASE_URL, ACCESS_TOKEN } from '../Index';
 
-export default function Covtotal(condition) {
-    const [covdata, setCovdata] = useState(null);
+const request = (options) => {
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+    })
 
-    const option = {
-        url: '/api/cov/?date='+ condition,
-        method: 'get',
-        baseURL: 'http://localhost:8080',
-        withCredentials: true,
+    if (localStorage.getItem(ACCESS_TOKEN)) {
+        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }
 
-    async function fetchUrl(){
-        await axios(option).then(response =>{
-            const temp = response.data.response.body.items;
-            setCovdata(temp);
-        }).catch(error =>{
-            console.log(error);
-        });
-    }
+    const defaults = { headers: headers };
+    options = Object.assign({}, defaults, options);
 
-    useEffect(()=>{
-        fetchUrl();
+    return fetch(options.url, options)
+        .then(response =>
+            response.json().then(json => {
+                if (!response.ok) {
+                    return Promise.reject(json);
+                }
+                return json;
+            })
+        );
+};
+
+export function getCovData(condition) {
+    return request({
+        url: API_BASE_URL + "/cov/?date=" + condition,
+        method: 'GET'
     });
-
-    return [covdata];
-    
 }
