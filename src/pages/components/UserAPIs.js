@@ -48,3 +48,11 @@ export function signup(signupRequest){
         body: JSON.stringify(signupRequest)
     });
 }
+
+export function updatePassword(passwordRequest){
+    return request({
+        url: API_BASE_URL + "/user/updatePassword",
+        method: 'POST',
+        body: JSON.stringify(passwordRequest)
+    });
+}
