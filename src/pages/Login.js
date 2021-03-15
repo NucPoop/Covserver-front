@@ -33,6 +33,7 @@ class Login extends Component {
             .then(response => {
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 this.props.history.push("/");
+                window.location.reload(false);
             }).catch(error => {
                 if (error.status === 401) {
                     alert("아이디나 비밀번호가 잘못되었습니다.");
@@ -57,8 +58,6 @@ class Login extends Component {
                 value: input.target.value
             }
         });
-
-        this.validatePassword(this.state.password.value);
     };
 
     render() {
@@ -88,13 +87,13 @@ class Login extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password}/>
                 </div>
 
-                <p className="check-message" hidden="true"> 가입되지 않은 이메일입니다. </p>
+                <p className="check-message" hidden={true}> 가입되지 않은 이메일입니다. </p>
 
                 <p className="forgot-password text-center">
                     계정이 없으신가요? <a href={"/sign-up"}>회원가입</a>
                 </p>
 
-                <Button onClick="/" type="submit" className="login">로그인</Button>
+                <Button type="submit" className="login">로그인</Button>
 
                 <p className="forgot-password text-right">
                     <a href="/findpsw">비밀번호를 잊으셨나요?</a>

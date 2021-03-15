@@ -6,7 +6,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Row from 'react-bootstrap/Row';
 import '../style/Home.css';
 import Covid from './components/Covid';
-import {ACCESS_TOKEN} from './Index';
+import { ACCESS_TOKEN } from './Index';
 
 
 class Home extends Component {
@@ -17,8 +17,11 @@ class Home extends Component {
     }
 
     render() {
-        if (localStorage.getItem(ACCESS_TOKEN)) {
-            console.log(localStorage.getItem(ACCESS_TOKEN));
+        let localButton;
+        if (this.props.isAuthenticated === true) {
+            localButton = [<ToggleButton key={1} className="location-radiobtn" value={0} disabled={false}>지역 현황</ToggleButton>];
+        } else {
+            localButton = [<ToggleButton key={2} className="location-radiobtn" value={0} disabled={true}>지역 현황</ToggleButton>];
         }
         return (
             <div className="home-container">
@@ -30,7 +33,7 @@ class Home extends Component {
                                 <Nav.Link href="/">지역</Nav.Link>
 
                             </Nav> */}
-                            
+
                         </Col>
                         <Col xs={9} className="home-content">
                             <div className="home-time">
@@ -40,11 +43,11 @@ class Home extends Component {
 
                             <ToggleButtonGroup className="location-radio" type="radio" name="options" defaultValue={1}>
                                 <ToggleButton className="location-radiobtn" value={1}>전국 현황</ToggleButton>
-                                <ToggleButton className="location-radiobtn" value={0} disabled={true}>지역 현황</ToggleButton>
+                                {localButton}
                             </ToggleButtonGroup>
 
 
-                            <Covid />
+                            {/* <Covid /> */}
                         </Col>
                     </Row>
                 </Container>

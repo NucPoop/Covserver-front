@@ -4,43 +4,99 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
-import { ACCESS_TOKEN } from '../../pages/Index';
+import { Component } from 'react';
 
-export default function Menubar() {
+class Menubar extends Component {
+  constructor(props) {
+    super(props);
+    this.handleMenuClick = this.handleMenuClick.bind(this);
+  }
 
-  return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={Link} to="/">CovNoti</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">정보</Nav.Link>
-          <Nav.Link as={Link} to="/location">지역 및 알림 설정</Nav.Link>
-          {/* <Nav.Link as={Link} to="/location" hidden={true}>지역 및 알림 설정</Nav.Link> */}
-        </Nav>
-        <Form inline>
-          <Link className="nav-link" to={"/sign-in"}>
-            <Button variant="outline-success" >로그인</Button>{' '}
+  handleMenuClick() {
+      this.props.onLogout();
+  }
+
+  render() {
+    let menuItems;
+    let locationalram;
+    if (this.props.isAuthenticated === true) {
+      locationalram = [
+        <Nav.Link as={Link} to="/location">지역 및 알림 설정</Nav.Link>
+      ];
+      menuItems = [
+        <Form inline key={4}>
+          <Link className="nav-link" to={"/"} key={0}>
+            <Button variant="outline-success" onClick={this.handleMenuClick}>로그아웃</Button>
           </Link>
-          <Link className="nav-link" to={"/sign-up"}>
-            <Button variant="outline-primary" >회원가입</Button>
-          </Link>
-          <Link className="nav-link" to={"/"} onClick={logout}>
-            {/* <Link className="nav-link" to={"/log-out"} hidden={true}> */}
-            <Button variant="outline-success">로그아웃</Button>{' '}
-          </Link>
-          <Link className="nav-link" to={"/user-info"}>
-            {/* <Link className="nav-link" to={"/user-info"} hidden={true}> */}
+          <Link className="nav-link" to={"/user-info"} key={1}>
             <Button variant="outline-primary" >회원정보</Button>
           </Link>
-
         </Form>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+      ];
+    } else {
+      locationalram = [];
+      menuItems = [
+        <Form inline key={5}>
+          <Link className="nav-link" to={"/sign-in"} key={2}>
+            <Button variant="outline-success" >로그인</Button>
+          </Link>
+          <Link className="nav-link" to={"/sign-up"} key={3}>
+            <Button variant="outline-primary" >회원가입</Button>
+          </Link>
+        </Form>
+      ];
+    }
+
+    return (
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand as={Link} to="/">CovNoti</Navbar.Brand>
+        <Navbar.Toggle key="nav" aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link as={Link} to="/">정보</Nav.Link>
+            {locationalram}
+          </Nav>
+          {menuItems}
+        </Navbar.Collapse>
+      </Navbar>
+    );
+
+  }
 }
 
-function logout() {
-  console.log("logoutComplete");
-  localStorage.removeItem(ACCESS_TOKEN);
-}
+
+// export default function Menubar() {
+
+//   return (
+//     <Navbar bg="light" expand="lg">
+//       <Navbar.Brand as={Link} to="/">CovNoti</Navbar.Brand>
+//       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//       <Navbar.Collapse id="basic-navbar-nav">
+//         <Nav className="mr-auto">
+//           <Nav.Link as={Link} to="/">정보</Nav.Link>
+//           <Nav.Link as={Link} to="/location">지역 및 알림 설정</Nav.Link>
+//           {/* <Nav.Link as={Link} to="/location" hidden={true}>지역 및 알림 설정</Nav.Link> */}
+//         </Nav>
+//         <Form inline>
+//           <Link className="nav-link" to={"/sign-in"}>
+//             <Button variant="outline-success" >로그인</Button>{' '}
+//           </Link>
+//           <Link className="nav-link" to={"/sign-up"}>
+//             <Button variant="outline-primary" >회원가입</Button>
+//           </Link>
+//           <Link className="nav-link" to={"/"} onClick={logout}>
+//             {/* <Link className="nav-link" to={"/log-out"} hidden={true}> */}
+//             <Button variant="outline-success">로그아웃</Button>{' '}
+//           </Link>
+//           <Link className="nav-link" to={"/user-info"}>
+//             {/* <Link className="nav-link" to={"/user-info"} hidden={true}> */}
+//             <Button variant="outline-primary" >회원정보</Button>
+//           </Link>
+
+//         </Form>
+//       </Navbar.Collapse>
+//     </Navbar>
+//   );
+// }
+
+export default Menubar;
