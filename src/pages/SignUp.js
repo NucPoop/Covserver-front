@@ -35,8 +35,6 @@ export default class SignUp extends Component {
                 value: input.target.value
             }
         });
-
-        this.validatePassword(this.state.password.value);
     };
 
     SignUp(event) {
@@ -77,7 +75,7 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>비밀번호</label>
-                    <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password} />
+                    <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} onBlur={this.validatePassword} value={password} />
                 </div>
 
                 <p ref={this.checkMsg} hidden={true} className="check-message"> 이미 사용 중인 이메일입니다. </p>
@@ -91,7 +89,8 @@ export default class SignUp extends Component {
         );
     }
 
-    validatePassword = (password) => {
+    validatePassword = () => {
+        let password = this.state.password.value;
         if (password.length < 4) {
             this.checkMsg.current.innerHTML = "4자 이상 입력해주세요.";
             this.checkMsg.current.hidden = false;
