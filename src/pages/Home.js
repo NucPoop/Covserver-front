@@ -35,7 +35,7 @@ class Home extends Component {
                         <Col xs={9} className="home-content">
                             <div className="home-time">
                                 <h4>전국 Covid 19 현황판</h4>
-                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth() + 1}월 {this.state.date.getDate() - 1}일</h1>
+                                <h1>{this.state.date.getFullYear()}년 {this.state.date.getMonth() + 1}월 {this.state.date.getDate()}일</h1>
                             </div>
 
                             <ToggleButtonGroup className="location-radio" type="radio" name="options" defaultValue={1}>

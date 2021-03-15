@@ -11,7 +11,7 @@ export default function Covid() {
     var dateYet = new Date();
     var condition = "";
 
-    date.setDate(date.getDate() - 1);
+    //date.setDate(date.getDate() - 1);
     dateYet.setDate(date.getDate() - 1);
 
     condition += date.getFullYear();
