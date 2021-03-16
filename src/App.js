@@ -51,7 +51,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  handleLogout(redirectTo="/", description="You're successfully logged out."){
+  handleLogout(redirectTo="/"){
     localStorage.removeItem(ACCESS_TOKEN);
 
     this.setState({
@@ -60,8 +60,6 @@ class App extends Component {
     });
 
     this.props.history.push(redirectTo);
-
-    alert(description);
   }
 
   handleLogin(){
@@ -95,9 +93,9 @@ class App extends Component {
             <Route path="/sign-in" render={(props) => <Login onLogin={this.handleLogin} {...props} />} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/user-info" render={(props) => <UserInfo isAuthenticated={this.state.isAuthenticated}
-            currentUser={this.state.currentUser} {...props} />} />
+            currentUser={this.state.currentUser} />} />
             <Route path="/withdrawal" render={(props) => <Withdrawal isAuthenticated={this.state.isAuthenticated}
-            currentUser={this.state.currentUser} {...props} />} />
+            currentUser={this.state.currentUser} onLogout={this.handleLogout} {...props} />} />
             <Route path="/findPsw" component={FindPsw} />
           </div>
           </>

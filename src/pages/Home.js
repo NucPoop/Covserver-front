@@ -47,7 +47,7 @@ class Home extends Component {
                             </ToggleButtonGroup>
 
 
-                            {/* <Covid /> */}
+                            <Covid />
                         </Col>
                     </Row>
                 </Container>

@@ -67,3 +67,11 @@ export function getCurrentUser() {
         method: 'GET'
     });
 }
+
+export function withdraw(passwordRequest) {
+    return request({
+        url: API_BASE_URL + "/user/withdrawal",
+        method: 'DELETE',
+        body: JSON.stringify(passwordRequest)
+    });
+}
