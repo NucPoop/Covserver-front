@@ -1,3 +1,8 @@
+.userinfo-form{
+    height: fit-content;
+    margin-bottom: 100px;
+}
+
 .alarm-radio{
     width: 100%;
     height: fit-content;
@@ -26,7 +31,6 @@
     border-color: #b84c4c;
     background-color: #e25d5d;
     margin-top: 50px;
-    margin-bottom: 30px;
 }
 
 .withdraw:hover{

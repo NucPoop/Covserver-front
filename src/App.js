@@ -102,9 +102,9 @@ class App extends Component {
         </Switch>
 
       </div>
-      <footer className="App-footer">
+      {/* <footer className="App-footer">
         <Footer />
-      </footer>
+      </footer> */}
     </Router>
     );
   }

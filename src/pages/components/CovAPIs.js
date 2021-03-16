@@ -29,3 +29,10 @@ export function getCovData(condition) {
         method: 'GET'
     });
 }
+
+export function getCovLocalData(condition) {
+    return request({
+        url: API_BASE_URL + "/cov/Local?date=" + condition,
+        method: 'GET'
+    });
+}

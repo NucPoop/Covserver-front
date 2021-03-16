@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import LocationList from './LocationList';
 //import Button from 'react-bootstrap/Button';
 
 export default class LocationSetting extends Component {
@@ -22,32 +23,7 @@ export default class LocationSetting extends Component {
             <div className="location-setting">
                 <h3>지역 설정</h3>
 
-                <Form>
-                    <Form.Group controlId="location-state">
-                        <Form.Label className="label">도</Form.Label>
-                        <Form.Control className="province" as="select" custom>
-                            <option>서울특별시</option>
-                            <option>세종특별자치시</option>
-                            <option>인천광역시</option>
-                            <option>대전광역시</option>
-                            <option>광주광역시</option>
-                            <option>대구광역시</option>
-                            <option>울산광역시</option>
-                            <option>부산광역시</option>
-                            <option>경기도</option>
-                            <option>강원도</option>
-                            <option>충청북도</option>
-                            <option>충청남도</option>
-                            <option>전라북도</option>
-                            <option>전라남도</option>
-                            <option>경상북도</option>
-                            <option>경상남도</option>
-                            <option>제주특별자치도</option>
-                        </Form.Control>
-                    </Form.Group>
-                </Form>
-
-                <Button className="setlocation-btn" type="submit" controlId="setLocation">설정</Button>
+                <LocationList />
 
                 <div className="alarm-setting">
                     <h3>알림 설정</h3>
