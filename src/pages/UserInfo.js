@@ -28,7 +28,7 @@ export default class UserInfo extends Component {
 
                 <p className="check-message"> 현재 비밀번호와 같습니다. or 4자 이상, 20자 이하로 입력해주세요. </p>
 
-                <LocationList />
+                <LocationList btnValue={"수정하기"}/>
 
                 <Button href="/withdrawal" type="button" className="withdraw">탈퇴하기</Button>
                 

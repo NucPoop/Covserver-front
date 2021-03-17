@@ -49,7 +49,7 @@ class Menubar extends Component {
 
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand as={Link} to="/">CovNoti</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Covid Notify</Navbar.Brand>
         <Navbar.Toggle key="nav" aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
