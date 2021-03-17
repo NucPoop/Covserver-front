@@ -15,7 +15,8 @@ export default class LocationSetting extends Component {
         this.state = {
             title: "설정하기",
             time: '',
-            notify: ''
+            notify: '',
+            isTimeHidden: true
         }
 
         this.timeForm = React.createRef();
@@ -29,9 +30,11 @@ export default class LocationSetting extends Component {
         }
 
         updateLocation(locationRequest).then(response => {
-            this.props.currentUser.location = locationRequest.location;
+            if(response.success){
+                this.props.currentUser.location = locationRequest.location;
+            }
+        
             alert(response.message);
-            console.log(this.props.currentUser.location);
         }).catch(error => {
             alert(error);
         });
@@ -45,13 +48,15 @@ export default class LocationSetting extends Component {
             notifyTime: this.state.time
         }
 
-        console.log(this.state);
-        console.log(notifyRequest);
-
         updateNotify(notifyRequest).then(response => {
-            this.props.currentUser.notifyYn = notifyRequest.notifyYn;
-            this.props.currentUser.notifyTime = notifyRequest.notifyTime;
             alert(response.message);
+
+            if(response.success){
+                this.props.currentUser.notifyYn = notifyRequest.notifyYn;
+                this.props.currentUser.notifyTime = notifyRequest.notifyTime;
+                this.props.history.push("/");
+            }
+            
         }).catch(error => {
             alert(error);
         })
@@ -73,6 +78,16 @@ export default class LocationSetting extends Component {
             time: this.timeForm.current.value,
             notify: 'Y'
         });
+
+        if(this.props.currentUser.location != null){
+            this.setState({
+                isTimeHidden : false
+            });
+        }
+
+        if (this.props.currentUser.notifyTime != null) {
+            this.timeForm.current.value = this.props.currentUser.notifyTime;
+        }
     }
 
     render() {
@@ -81,9 +96,9 @@ export default class LocationSetting extends Component {
             <div className="location-setting">
                 <h3>지역 설정</h3>
 
-                <LocationList btnValue={this.state.title} onSubmit={this.setLocation} />
+                <LocationList btnValue={this.state.title} onSubmit={this.setLocation} location={this.props.currentUser.location} />
 
-                <div className="alarm-setting">
+                <div className="alarm-setting" hidden={this.state.isTimeHidden}>
                     <h3>알림 설정</h3>
 
                     <Form>

@@ -19,6 +19,10 @@ export default class LocationList extends Component {
     }
 
     componentDidMount() {
+        if (this.props.location != null) {
+            this.formControl.current.value = this.props.location;
+        }
+        
         this.setState({
             location: this.formControl.current.value
         });
