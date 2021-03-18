@@ -99,3 +99,11 @@ export function updateNotify(notifyRequest){
     });
     
 }
+
+export function resetPassword(emailRequest){
+    return request({
+        url: API_BASE_URL + "/user/resetPassword",
+        method: 'POST',
+        body: JSON.stringify(emailRequest)
+    });
+}

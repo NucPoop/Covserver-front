@@ -1,13 +1,14 @@
 import '../style/FindPsw.css'
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
-import { checkEmailAvailability } from './components/UserAPIs'
+import { checkEmailAvailability, resetPassword } from './components/UserAPIs'
 
 export default class FindPsw extends Component {
 
     constructor(props) {
         super(props);
         this.FindEmail = this.FindEmail.bind(this);
+        this.SendNewPassword = this.SendNewPassword.bind(this);
         this.checkEmail = React.createRef();
         this.submitBtn = React.createRef();
     }
@@ -46,10 +47,27 @@ export default class FindPsw extends Component {
         });
     }
 
+    SendNewPassword(event) {
+        event.preventDefault();
+
+        const emailRequest = {
+            email: this.state.email.value
+        };
+
+        resetPassword(emailRequest)
+            .then(response => {
+                alert("새로운 비밀번호를 메일로 전송하였습니다!");
+                this.props.history.push("/");
+            }).catch(error => {
+                alert("비밀번호 초기화 실패");
+            });
+
+    }
+
     render() {
         const email = this.state.email.value;
         return (
-            <form>
+            <form onSubmit={this.SendNewPassword}>
                 <h3>암호 재설정</h3>
 
                 <div className="reset-message">
