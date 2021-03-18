@@ -13,6 +13,8 @@ export default class UserInfo extends Component {
             newPassword: "",
             email: ""
         }
+        this.newPswCheck = React.createRef();
+        this.editBtn = React.createRef();
     }
 
     updateSettings = (locationValue) => {
@@ -89,16 +91,14 @@ export default class UserInfo extends Component {
                         <input type="password" className="form-control" placeholder="Enter password" value={this.state.password} onChange={this.handleChangePassword} />
                     </div>
 
-                    <p className="check-message"> 비밀번호가 일치하지 않습니다. </p>
-
                     <div className="form-group">
                         <label>새 비밀번호</label>
-                        <input type="password" className="form-control" placeholder="Enter password" value={this.state.newPassword} onChange={this.handleChangeNewPassword} />
+                        <input type="password" className="form-control" placeholder="Enter password" value={this.state.newPassword} onChange={this.handleChangeNewPassword} onBlur={this.validatePassword} />
                     </div>
 
-                    <p className="check-message"> 현재 비밀번호와 같습니다. or 4자 이상, 20자 이하로 입력해주세요. </p>
+                    <p ref={this.newPswCheck} className="check-message" hidden={true}> 4자 이상, 20자 이하로 입력해주세요. </p>
 
-                    <LocationList btnValue={"수정하기"} onSubmit={this.updateSettings} location={this.props.currentUser.location} />
+                    <LocationList ref={this.editBtn} btnValue={"수정하기"} onSubmit={this.updateSettings} location={this.props.currentUser.location} />
 
                     <Button href="/withdrawal" type="button" className="withdraw">탈퇴하기</Button>
 
@@ -107,5 +107,19 @@ export default class UserInfo extends Component {
 
             </div>
         );
+    }
+
+    validatePassword = () => {
+        let newPassword = this.state.newPassword;
+        if (newPassword.length < 4) {
+            this.newPswCheck.current.innerHTML = "4자 이상 입력해주세요.";
+            this.newPswCheck.current.hidden = false;
+        } else if (newPassword.length > 20) {
+            this.newPswCheck.current.innerHTML = "20자 이하 입력해주세요.";
+            this.newPswCheck.current.hidden = false;
+        } else {
+            this.newPswCheck.current.hidden = true;
+            this.editBtn.current.disabled = false;
+        }
     }
 }
