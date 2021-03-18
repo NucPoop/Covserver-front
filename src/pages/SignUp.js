@@ -2,6 +2,7 @@ import '../style/SignUp.css';
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 import { signup, checkEmailAvailability } from './components/UserAPIs';
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
 
 export default class SignUp extends Component {
 
@@ -82,9 +83,11 @@ export default class SignUp extends Component {
 
                 <Button ref={this.signupBtn} type="submit" className="sign-up" disabled={true}>회원가입</Button>
 
+                <Link className="nav-link" to={"/sign-in"}>
                 <p className="forgot-password text-right">
-                    계정이 있으신가요? <a href={"/sign-in"}>로그인</a>
+                    계정이 있으신가요? <a href={""}>로그인</a>
                 </p>
+                </Link>
             </form>
         );
     }

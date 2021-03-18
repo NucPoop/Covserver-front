@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 import LocationList from './LocationList';
 import { updateLocation, updatePassword } from './components/UserAPIs'
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
 
 export default class UserInfo extends Component {
 
@@ -37,11 +38,14 @@ export default class UserInfo extends Component {
                 if (passwordRequest.password !== "" && passwordRequest.newPassword !== "") {
                     isCallUpdatePassword = true;
                     updatePassword(passwordRequest).then(response => {
-                        if (response.success) {
-                            this.props.onLogout();
-                        }
+
 
                         alert(response.message);
+                        if (response.success) {
+                            this.props.onLogout();
+                            this.props.history.push("/");
+                        }
+
                     }).catch(error => {
                         alert(error);
                     });
@@ -98,9 +102,12 @@ export default class UserInfo extends Component {
 
                     <p ref={this.newPswCheck} className="check-message" hidden={true}> 4자 이상, 20자 이하로 입력해주세요. </p>
 
-                    <LocationList ref={this.editBtn} btnValue={"수정하기"} onSubmit={this.updateSettings} location={this.props.currentUser.location} />
+                    <LocationList ref={this.editBtn} btnValue={"수정하기"} onSubmit={this.updateSettings} location={this.props.currentUser == null ? null : this.props.currentUser.location} />
 
-                    <Button href="/withdrawal" type="button" className="withdraw">탈퇴하기</Button>
+                    
+                    <Link className="nav-link" to={"/withdrawal"}>
+                        <Button type="button" className="withdraw">탈퇴하기</Button>
+                    </Link>
 
                 </div>
 

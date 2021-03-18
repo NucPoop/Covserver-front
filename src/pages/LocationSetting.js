@@ -32,6 +32,9 @@ export default class LocationSetting extends Component {
         updateLocation(locationRequest).then(response => {
             if(response.success){
                 this.props.currentUser.location = locationRequest.location;
+                this.setState({
+                    isTimeHidden : false
+                });
             }
         
             alert(response.message);
@@ -75,9 +78,18 @@ export default class LocationSetting extends Component {
 
     componentDidMount() {
         this.setState({
-            time: this.timeForm.current.value,
-            notify: 'Y'
+            time: this.timeForm.current.value
         });
+
+        if(this.props.currentUser.notifyYn != null){
+            this.setState({
+                notify :this.props.currentUser.notifyYn
+            });
+        }else{
+            this.setState({
+                notify : 'N'
+            });
+        }
 
         if(this.props.currentUser.location != null){
             this.setState({
@@ -96,13 +108,13 @@ export default class LocationSetting extends Component {
             <div className="location-setting">
                 <h3>지역 설정</h3>
 
-                <LocationList btnValue={this.state.title} onSubmit={this.setLocation} location={this.props.currentUser.location} />
+                <LocationList btnValue={this.state.title} onSubmit={this.setLocation} location={this.props.currentUser == null ? null : this.props.currentUser.location} />
 
                 <div className="alarm-setting" hidden={this.state.isTimeHidden}>
                     <h3>알림 설정</h3>
 
                     <Form>
-                        <ToggleButtonGroup ref={this.selectForm} className="alarm-radio" type="radio" name="options" defaultValue={"Y"} onChange={(select) => { this.state.notify = select }}>
+                        <ToggleButtonGroup ref={this.selectForm} className="alarm-radio" type="radio" name="options" defaultValue={this.props.currentUser.notifyYn != null?this.props.currentUser.notifyYn:"N"} onChange={(select) => { this.setState({ notify : select}) }}>
                             <ToggleButton className="alarm-radiobtn" value={"Y"}>알림 허용</ToggleButton>
                             <ToggleButton className="alarm-radiobtn" value={"N"}>알림 거부</ToggleButton>
                         </ToggleButtonGroup>

@@ -1,8 +1,9 @@
 import '../style/Auth.css';
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import {ACCESS_TOKEN} from './Index';
-import {login} from './components/UserAPIs';
+import { ACCESS_TOKEN } from './Index';
+import { login } from './components/UserAPIs';
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
 
 class Login extends Component {
 
@@ -84,20 +85,29 @@ class Login extends Component {
 
                 <div className="form-group">
                     <label>비밀번호</label>
-                    <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password}/>
+                    <input type="password" className="form-control" placeholder="Enter password" required onChange={this.handleChangePassword} value={password} />
                 </div>
 
                 <p className="check-message" hidden={true}> 가입되지 않은 이메일입니다. </p>
 
+                <Link className="nav-link" to={"/sign-up"}>
                 <p className="forgot-password text-center">
-                    계정이 없으신가요? <a href={"/sign-up"}>회원가입</a>
+                        계정이 없으신가요? <a href="">회원가입</a>
                 </p>
+                </Link>
 
                 <Button type="submit" className="login">로그인</Button>
 
+                <Link className="nav-link" to={"/findPsw"}>
                 <p className="forgot-password text-right">
-                    <a href="/findpsw">비밀번호를 잊으셨나요?</a>
+                        <a href="">비밀번호를 잊으셨나요?</a>
+                    
                 </p>
+                </Link>
+
+
+
+
             </form>
         );
     }

@@ -11,15 +11,18 @@ export default function Covid() {
     var dateYet = new Date();
     var condition = "";
 
-    //date.setDate(date.getDate() - 1);
+    if (date.getHours() >= 0 && date.getHours() <= 9) {
+        date.setDate(date.getDate() - 1);
+    }
+
     dateYet.setDate(date.getDate() - 1);
 
     condition += date.getFullYear();
     condition += (date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)
     condition += date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate();
 
-    var [covdata,setCovdata] = useState(null);
-    if(covdata == null){
+    var [covdata, setCovdata] = useState(null);
+    if (covdata == null) {
         getCovData(condition).then(response => {
             setCovdata(response.response.body.items);
         }
@@ -34,8 +37,8 @@ export default function Covid() {
     condition += (dateYet.getMonth() + 1) < 10 ? ("0" + (dateYet.getMonth() + 1)) : (dateYet.getMonth() + 1)
     condition += dateYet.getDate() < 10 ? ("0" + dateYet.getDate()) : dateYet.getDate();
 
-    var [covdataYet,setCovdataYet] = useState(null);
-    if(covdata == null){
+    var [covdataYet, setCovdataYet] = useState(null);
+    if (covdataYet == null) {
         getCovData(condition).then(response => {
             setCovdataYet(response.response.body.items);
         }
@@ -45,8 +48,8 @@ export default function Covid() {
         );
     }
 
-    
-    if (covdata != null && covdataYet!=null) {
+
+    if (covdata != null && covdataYet != null) {
         return (
             <Table striped bordered hover size="sm" className="home-table">
                 <thead>

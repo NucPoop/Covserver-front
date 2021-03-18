@@ -44,7 +44,7 @@ class Home extends Component {
         let localButton;
         let isShow = false;
 
-        if (this.props.isAuthenticated === true) {
+        if (this.props.isAuthenticated === true && this.props.currentUser.location != null) {
             localButton = [<ToggleButton key={1} className="location-radiobtn" value={0} disabled={false}>지역 현황</ToggleButton>];
             isShow = true;
         } else {

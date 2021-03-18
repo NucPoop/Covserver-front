@@ -10,7 +10,10 @@ export default function CovidLocal(props) {
     var dateYet = new Date();
     var condition = "";
 
-    //date.setDate(date.getDate() - 1);
+    if (date.getHours() >= 0 && date.getHours() <= 9) {
+        date.setDate(date.getDate() - 1);
+    }
+    
     dateYet.setDate(date.getDate() - 1);
 
     condition += date.getFullYear();
@@ -48,7 +51,7 @@ export default function CovidLocal(props) {
     condition += dateYet.getDate() < 10 ? ("0" + dateYet.getDate()) : dateYet.getDate();
 
     var [covdataYet, setCovdataYet] = useState(null);
-    if (covdata == null) {
+    if (covdataYet == null) {
         getCovLocalData(condition).then(response => {
             const resData = response.response.body.items.item;
 
