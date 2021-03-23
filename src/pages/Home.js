@@ -42,27 +42,17 @@ class Home extends Component {
 
     render() {
         let localButton;
-        let isShow = false;
 
         if (this.props.isAuthenticated === true && this.props.currentUser.location != null) {
             localButton = [<ToggleButton key={1} className="location-radiobtn" value={0} disabled={false}>지역 현황</ToggleButton>];
-            isShow = true;
         } else {
             localButton = [<ToggleButton key={2} className="location-radiobtn" value={0} disabled={true}>지역 현황</ToggleButton>];
-            isShow = false;
         }
         return (
             <div className="home-container">
                 <Container fluid>
                     <Row>
-                        <Col xs={1} className="home-menu">
-                            {/* <Nav defaultActiveKey="/" className="flex-column">
-                                <Nav.Link href="/">전국</Nav.Link>
-                                <Nav.Link href="/">지역</Nav.Link>
-
-                            </Nav> */}
-
-                        </Col>
+                        <Col xs={1} className="home-menu"/>
                         <Col xs={9} className="home-content">
                             <div className="home-time">
                                 <h4>전국 Covid 19 현황판</h4>
@@ -75,9 +65,6 @@ class Home extends Component {
                             </ToggleButtonGroup>
                             
                             {this.state.covidTable}
-                            {/* <Covid ref={this.all} hidden={false} />
-                            {localCovid && isShow} */}
-
                         </Col>
                     </Row>
                 </Container>

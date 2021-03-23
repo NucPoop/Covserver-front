@@ -7,7 +7,6 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import LocationList from './LocationList';
 import { updateLocation, updateNotify } from './components/UserAPIs'
 import { TimerSharp } from '@material-ui/icons';
-//import Button from 'react-bootstrap/Button';
 
 export default class LocationSetting extends Component {
     constructor(props) {

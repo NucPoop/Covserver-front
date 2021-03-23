@@ -32,7 +32,7 @@ export function getCovData(condition) {
 
 export function getCovLocalData(condition) {
     return request({
-        url: API_BASE_URL + "/cov/Local?date=" + condition,
+        url: API_BASE_URL + "/cov/local?date=" + condition,
         method: 'GET'
     });
 }
