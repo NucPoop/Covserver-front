@@ -2,8 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 import Menubar from './components/default/Menubar';
-import Footer from './components/default/Footer';
-import Header from './components/default/Header';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import LocationSetting from './pages/LocationSetting';
