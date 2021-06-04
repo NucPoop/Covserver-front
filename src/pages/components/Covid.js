@@ -64,17 +64,17 @@ export default function Covid() {
                 <tbody>
                     <tr>
                         <td>현재</td>
-                        <td>{covdata.item.decideCnt}</td>
-                        <td>{covdata.item.clearCnt}</td>
-                        <td>{covdata.item.careCnt}</td>
-                        <td>{covdata.item.deathCnt}</td>
+                        <td>{covdata.item.decideCnt.toLocaleString()}</td>
+                        <td>{covdata.item.clearCnt.toLocaleString()}</td>
+                        <td>{covdata.item.careCnt.toLocaleString()}</td>
+                        <td>{covdata.item.deathCnt.toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>전일대비</td>
-                        <td>{covdata.item.decideCnt - covdataYet.item.decideCnt}</td>
-                        <td>{covdata.item.clearCnt - covdataYet.item.clearCnt}</td>
-                        <td>{covdata.item.careCnt - covdataYet.item.careCnt}</td>
-                        <td>{covdata.item.deathCnt - covdataYet.item.deathCnt}</td>
+                        <td>{(covdata.item.decideCnt - covdataYet.item.decideCnt).toLocaleString()}</td>
+                        <td>{(covdata.item.clearCnt - covdataYet.item.clearCnt).toLocaleString()}</td>
+                        <td>{(covdata.item.careCnt - covdataYet.item.careCnt).toLocaleString()}</td>
+                        <td>{(covdata.item.deathCnt - covdataYet.item.deathCnt).toLocaleString()}</td>
                     </tr>
                 </tbody>
             </Table>
