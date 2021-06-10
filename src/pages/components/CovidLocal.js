@@ -84,17 +84,17 @@ export default function CovidLocal(props) {
                 <tbody>
                     <tr>
                         <td>현재</td>
-                        <td>{covdata.defCnt}</td>
-                        <td>{covdata.isolClearCnt}</td>
-                        <td>{covdata.isolIngCnt}</td>
-                        <td>{covdata.deathCnt}</td>
+                        <td>{covdata.defCnt.toLocaleString()}</td>
+                        <td>{covdata.isolClearCnt.toLocaleString()}</td>
+                        <td>{covdata.isolIngCnt.toLocaleString()}</td>
+                        <td>{covdata.deathCnt.toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>전일대비</td>
-                        <td>{covdata.incDec}</td>
-                        <td>{covdata.isolClearCnt - covdataYet.isolClearCnt}</td>
-                        <td>{covdata.isolIngCnt - covdataYet.isolIngCnt}</td>
-                        <td>{covdata.deathCnt - covdataYet.deathCnt}</td>
+                        <td>{covdata.incDec.toLocaleString()}</td>
+                        <td>{(covdata.isolClearCnt - covdataYet.isolClearCnt).toLocaleString()}</td>
+                        <td>{(covdata.isolIngCnt - covdataYet.isolIngCnt).toLocaleString()}</td>
+                        <td>{(covdata.deathCnt - covdataYet.deathCnt).toLocaleString()}</td>
                     </tr>
                 </tbody>
             </Table>
