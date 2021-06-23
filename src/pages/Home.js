@@ -52,7 +52,7 @@ class Home extends Component {
             <div className="home-container">
                 <Container fluid>
                     <Row>
-                        <Col xs={1} className="home-menu"/>
+                        <Col xs={1} className="home-menu" />
                         <Col xs={9} className="home-content">
                             <div className="home-time">
                                 <h4>전국 Covid 19 현황판</h4>
@@ -63,7 +63,7 @@ class Home extends Component {
                                 <ToggleButton className="location-radiobtn" value={1}>전국 현황</ToggleButton>
                                 {localButton}
                             </ToggleButtonGroup>
-                            
+
                             {this.state.covidTable}
                         </Col>
                     </Row>
